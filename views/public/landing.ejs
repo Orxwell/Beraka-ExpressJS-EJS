@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/landing.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div id="bg-img"></div>
+    
+    <div class="wrapper">
+      <header>
+        <h1>Bienvenidos</h1>
+        <p>Beraka Galería</p>
+      </header>
+      
+      <nav>
+        <% data.establishments.forEach((item) => { %>
+          <a href="/shop?tag=<%= item.tag %>">I'm at <%= item.shop %></a>
+        <% }); %>
+      </nav>
+    </div>
+  </body>
+</html>

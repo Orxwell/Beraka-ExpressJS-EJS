@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/product_form.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>DailyBites</h1>
+        <p>Formulario</p>
+      </header>
+
+      <main>
+        <section class="container">
+          <h2>Especificaciones</h2>
+          <form
+            action="/product_form"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input
+              type="hidden"
+              name="token"
+              value="<% data.token %>"
+            />
+
+            <% if (data.dish) { %>
+              <input
+                type="hidden"
+                name="flag"
+                value="true"
+              />
+            <% } %>
+            
+            <% if (data.dish) { %>
+              <input
+                class="entries"
+                type="text"
+                name="dishname"
+                placeholder="Nombre del plato"
+                value="<%= data.dish.name %>"
+                required
+              />
+            <% } else { %>
+              <input
+                class="entries"
+                type="text"
+                name="dishname"
+                placeholder="Nombre del plato"
+                required
+              />
+            <% } %>
+            
+            <% if (data.dish) { %>
+              <input
+                class="entries"
+                type="text"
+                name="price"
+                placeholder="Precio"
+                value="<%= data.dish.price %>"
+                required
+                pattern="^\d+(\.\d{1,2})?$"
+                title="Precio inválido, ej: 12000.00, 8000"
+              />
+            <% } else { %>
+              <input
+                class="entries"
+                type="text"
+                name="price"
+                placeholder="Precio"
+                required
+                pattern="^\d+(\.\d{1,2})?$"
+                title="Precio inválido, ej: 12000.00, 8000"
+              />
+            <% } %>
+
+            <select
+              class="entries"
+              name="shopname"
+              required
+            >
+              <% if (data.dish) { %>
+                <% data.establishments.forEach((item) => { %>
+                    <% if (data.dish.location == item.shopname) { %>
+                      <option
+                        value="<%= item.shopname %>"
+                        selected
+                      >
+                        <%= item.shopname %>
+                      </option>
+                    <% } else { %>
+                      <option value="<%= item.shopname %>">
+                        <%= item.shopname %>
+                      </option>
+                    <% } %>
+                <% }); %>
+              <% } else { %>
+                <option
+                  value=""
+                  disabled
+                  selected
+                >Establecimiento</option>
+
+                <% data.establishments.forEach((item) => { %>
+                  <option value="<%= item.shopname %>">
+                    <%= item.shopname %>
+                  </option>
+                <% }); %>
+              <% } %>
+            </select>
+
+            <input
+              id="bttnPNG"
+              class="entries"
+              type="file"
+              name="image"
+              accept=".png"
+              required
+              title="Solo se permiten archivos .png"
+            />
+
+            <button type="submit">Guardar</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/check.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>DailyBites</h1>
+        <p>Factura</p>
+      </header>
+
+      <main>
+        <section class="container">
+          <form
+            action="/check"
+            method="POST"
+          >
+            <h2>Tu Factura</h2>
+
+            <p>Nombre del cliente:</p>
+            <input
+              type="hidden"
+              name="clientname"
+              value="<%= data.clientname %>"
+            />
+            <span><%= data.clientname %></span>
+
+            <p>Correo del cliente:</p>
+            <input
+              type="hidden"
+              name="clientgmail"
+              value="<%= data.clientgmail %>"
+            />
+            <span><%= data.clientgmail %></span>
+    
+            <p>Hora de entrega:</p>
+            <input
+              type="hidden"
+              name="deliverytime"
+              value="<%= data.deliverytime %>"
+            />
+            <span><%= data.deliverytime %></span>
+    
+            <p>Método de pago:</p>
+            <input
+              type="hidden"
+              name="paymethod"
+              value="<%= data.paymethod %>"
+            />
+            <span><%= data.paymethod %></span>
+    
+            <p>Lugar de recogida:</p>
+            <input
+              type="hidden"
+              name="location"
+              value="<%= data.dish.location %>"
+            />
+            <span><%= data.dish.location %></span>
+    
+            <p>Nombre del producto:</p>
+            <input
+              type="hidden"
+              name="productname"
+              value="<%= data.dish.name %>"
+            />
+            <span><%= data.dish.name %></span>
+    
+            <p>Total:</p>
+            <input
+              type="hidden"
+              name="totalprice"
+              value="<%= data.dish.price %>"
+            />
+            <span>$ <%= data.dish.price %></span>
+
+            <button type="submit">Confirmar pedido</button>
+          </form>
+        </section>
+
+        <a href="/shop">Cancelar pedido</a>
+      </main>
+    </div>
+  </body>
+</html>

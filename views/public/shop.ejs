@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/shop.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div id="bg-img"></div>
+
+    <div class="wrapper">
+      <header>
+        <h1>Beraka Productos</h1>
+        <p>Menú</p>
+      </header>
+
+      <main>
+        <% if (data.token) { %>
+          <a class="ref" href="/product_form?token=<%= data.token %>">Subir producto</a>
+
+          <% Object.entries(data.products).forEach(([type, products]) => { %>
+            <button data-id="<%= type %>" class="collapsible-button">Mostrar contenido</button>
+
+            <div id="<%= type %>" class="collapsible-content">
+              <% products.forEach(product => { %>
+                <section class="container">
+                  <a href="/product_form?token=<%= data.token %>&product_name=<%= product.name %>">
+                    <img src="<%= product.img_uri %>"/>
+                  </a>
+                  
+                  <h2><%= product.name %></h2>
+                  <p>Descripción: <%= product.description %></p>
+                  <p>Precio: $<%= product.cost %></p>
+                </section>
+              <% }); %>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <% Object.entries(data.products).forEach(([type, products]) => { %>
+            <button data-id="<%= type %>" data-spanish="<%= products[0].spanish %>" class="collapsible-button">Mostrar <%= products[0].spanish %></button>
+
+            <div id="<%= type %>" class="collapsible-content">
+              <% products.forEach(product => { %>
+                <section class="container">
+                  <a href="/order?product_name=<%= product.name %>">
+                    <img src="<%= product.img_uri %>"/>
+                  </a>
+                  
+                  <h2><%= product.name %></h2>
+                  <p>Descripción: <%= product.description %></p>
+                  <p>Precio: $<%= product.cost %></p>
+                </section>
+              <% }); %>
+            </div>
+          <% }); %>
+        <% } %>
+        
+        <script src="/static/js/collapsable_widgets.js" defer></script>
+      </main>
+    </div>
+  </body>
+</html>

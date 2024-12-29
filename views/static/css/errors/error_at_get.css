@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  padding: 0;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  height: 100vh;
+  
+  background-color: #111;
+  
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  
+  overflow: hidden;
+  position: relative;
+}
+
+#bg-img {
+  position: absolute;
+  inset: 0;
+  
+  background-image: url('../img/background_login.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: opacity(0.2);
+  
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  padding: 8px 20px;
+  
+  display: flex;
+  align-items: center;
+  
+  width: 100%;
+  height: 5vh;
+  
+  background-color: #111;
+  
+  gap: 20px;
+}
+
+header p {
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #fff;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  gap: 3vh;
+}
+
+section {
+  width: 90%;
+  max-width: 300px;
+  padding: 15px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  background-color: #111;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  border: 2px dotted rgb(157 134 93);
+  border-radius: 20px;
+
+  gap: 10px;
+}
+
+form {
+  margin-top: 5px;
+  
+  display: flex;
+  flex-direction: column;
+  
+  gap: 16px;
+}
+
+label {
+  padding: 5px 10px;
+  
+  font-size: clamp(14px, 1.5vmax, 16px);
+  font-weight: 600;
+  
+  color: rgb(157, 134, 93);
+  
+  border-radius: 20px;
+}
+
+.entries {
+  height: 30px;
+
+  padding: 2px 8px;
+  
+  text-align: left;
+}
+
+
+select, input {
+  border: none;
+  border-radius: 20px;
+  
+  font-size: clamp(14px, 1.5vmin, 16px);
+  
+  outline: none;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  align-self: center;
+}
+
+h1 {
+  padding-bottom: 5px;
+  
+  font-size: clamp(22px, 3vmax, 35px);
+  color: rgb(228, 195, 133);
+}
+
+h2 {
+  font-size: clamp(18px, 2.5vmax, 25px);
+  color: rgb(157, 134, 93);
+}
+
+h3 {
+  font-size: clamp(16px, 2vmax, 20px);
+}
+
+p {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 16px;
+  
+  color: rgb(205, 199, 186);
+  
+  text-align: center;
+  
+  margin: 0;
+}
+
+button {
+  padding: 8px 15px;
+
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 600;
+  
+  background-color: #999;
+  color: #222;
+  
+  border: 2px groove #222;
+  border-radius: 20px;
+  
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

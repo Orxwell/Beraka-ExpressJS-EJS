@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/order.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>DailyBites</h1>
+        <p>Pedido</p>
+      </header>
+
+      <main>
+        <section class="container">
+          <img src="<%= data.dish.img_uri %>"/>
+
+          <h2><%= data.dish.name %></h2>
+          <p id="price">$ <%= data.dish.price %></p>
+          <p>Tienda: <%= data.dish.location %></p>
+
+          <form
+            action="/order"
+            method="POST"
+          >
+            <input
+              type="hidden"
+              name="dishid"
+              value="<%= data.dish.id %>"
+            />
+
+            <input
+              class="entries"
+              type="text"
+              name="clientname"
+              placeholder="Nombre del cliente"
+              required
+            />
+
+            <select
+              class="entries"
+              name="deliverytime"
+              required
+            >
+              <option
+                value=""
+                disabled
+                selected
+              >Hora de entrega</option>
+
+              <option value="11:00:00">11:00am</option>
+              <option value="12:00:00">12:00am</option>
+              <option value="13:00:00">1:00pm</option>
+            </select>
+
+            <select
+              class="entries"
+              name="paymethod"
+              required
+            >
+              <option
+                value=""
+                disabled
+                selected
+              >Método de pago</option>
+
+              <option value="Efectivo">Efectivo</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Nequi">Nequi</option>
+              <option value="PSE">PSE</option>
+            </select>
+
+            <input
+              class="entries"
+              type="email"
+              name="clientgmail"
+              placeholder="Correo G-mail"
+              pattern="[a-zA-Z0-9._%+-]+@gmail\.com"
+              required
+            />
+
+            <button type="submit">Reservar</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

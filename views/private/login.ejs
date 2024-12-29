@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/login.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div id="bg-img"></div>
+
+    <div class="wrapper">
+      <header>
+        <h1>Beraka Galería</h1>
+        <p>Staffs</p>
+      </header>
+
+      <main>
+        <section>
+          <h2>Iniciar Sesión</h2>
+          <form
+            action="/login-beraka-staff"
+            method="POST"
+          >
+            <% if (data.errorFlag && data.tokenExpired) { %>
+              <p style="color: orangered;"><%= data.errorMessage %></p>
+            <% } else if (data.errorFlag) { %>
+              <p style="color: red;"><%= data.errorMessage %></p>
+            <% } %>
+
+            <select
+              class="entries"
+              name="tag"
+              required
+            >
+              <% if (data.shop === '') { %>
+                <option
+                  value=""
+                  disabled
+                  selected
+                >Establecimiento</option>
+              <% } %>
+
+              <% data.establishments.forEach(item => { %>
+                <% if (data.shop === item.shop) { %>
+                  <option value="<%= item.tag %>" selected>
+                    <%= item.shop %>
+                  </option>
+                <% } else { %>
+                  <option value="<%= item.tag %>">
+                    <%= item.shop %>
+                  </option>
+                <% } %>
+              <% }); %>
+            </select>
+
+            <input
+              id="password"
+              class="entries"
+              type="password"
+              name="password"
+              placeholder="contraseña"
+              required
+            />
+
+            <div>
+              <label for="checkbox">Mostrar</label>
+              <input
+                id="checkbox"
+                type="checkbox"
+              />
+
+              <script src="/static/js/checkbox.js" defer></script>
+            </div>
+
+            <button type="submit">Acceder</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
