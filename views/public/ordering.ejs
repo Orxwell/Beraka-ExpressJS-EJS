@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/ordering.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div id="bg-img"></div>
+
+    <div class="wrapper">
+      <header>
+        <h1>Beraka Productos</h1>
+        <p>Pedir</p>
+
+        <div id="icon-bar">
+          <a class="icons" href="/shopcart?tag=<%= data.tag %><%= data.unparsed ? `&unparsed=${data.unparsed}` : '' %>">
+            <img
+              src="/static/icon/cart.ico"
+              alt="Shopcart Icon"
+            />
+          </a>
+          <span id="counter-shopcart"><%= data.counter %></span>
+        </div>
+      </header>
+
+      <main>
+        <section class="container">
+          <img src="<%= data.product.img_uri %>"/>
+
+          <h2><%= data.product.name %></h2>
+          <p>$ <%= data.product.cost.toLocaleString("es-CO") %></p>
+          <p>Descripción: <%= data.product.description %></p>
+
+          <form
+            action="/ordering"
+            method="POST"
+          >
+            <input type="hidden" name="tag" value="<%= data.tag %>">
+            <input type="hidden" name="unparsed" value="<%= data.unparsed %>">
+            <input type="hidden" name="product_name" value="<%= data.product.name %>">
+            <input type="hidden" name="mode" value="<%= data.mode %>">
+
+            <div class="adder">
+              <button
+                id="minus"
+                class="addons"
+                type="button"
+              >-</button>
+
+              <input
+                id="quantity"
+                class="entries"
+                type="number"
+                name="quantity"
+                value="<%= data.quantity %>"
+                min="0"
+                max="99"
+                step="1"
+              />
+
+              <button
+                id="plus"
+                class="addons"
+                type="button"
+              >+</button>
+            </div>
+
+            <button type="submit">Guardar en carrito</button>
+          </form>
+        </section>
+
+        <script src="/static/js/adder_widget.js" defer></script>
+      </main>
+    </div>
+  </body>
+</html>

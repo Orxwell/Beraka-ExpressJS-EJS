@@ -6,33 +6,35 @@ const publicViewsPath  = join(utils.viewsPath, '/public') ;
 const privateViewsPath = join(utils.viewsPath, '/private');
 const errorsViewsPath  = join(utils.viewsPath, '/errors') ;
 
-// PUBLIC EJS - CLIENTS
-const landingEJS = join(publicViewsPath, '/landing.ejs');
-const shopEJS    = join(publicViewsPath, '/shop.ejs')   ; // CLIENTS & STAFFS
-const orderEJS   = join(publicViewsPath, '/order.ejs')  ;
-const checkEJS   = join(publicViewsPath, '/check.ejs')  ;
+// HANDLING ERRORS
+const errorAtGetEJS  = join(errorsViewsPath, '/error_at_get.ejs') ;
+const errorAtPostEJS = join(errorsViewsPath, '/error_at_post.ejs');
 
 // PRIVATE EJS - STAFFS
-const loginEJS        = join(privateViewsPath, '/login.ejs')       ;
-const productFormEJS  = join(privateViewsPath, '/product_form.ejs');
-const notificationEJS = join(privateViewsPath, '/notification.ejs');
+const loginEJS       = join(privateViewsPath, '/login.ejs')       ;
+const productFormEJS = join(privateViewsPath, '/product_form.ejs');
+const ordersEJS      = join(privateViewsPath, '/orders.ejs')      ;
 
-// HANDLING ERRORS
-const errorAtPostEJS = join(errorsViewsPath, '/error_at_post.ejs');
-const errorAtGetEJS  = join(errorsViewsPath, '/error_at_get.ejs') ;
+// PUBLIC EJS - CLIENTS
+const landingEJS  = join(publicViewsPath, '/landing.ejs') ;
+const menuEJS     = join(publicViewsPath, '/menu.ejs')    ;
+const orderingEJS = join(publicViewsPath, '/ordering.ejs');
+const shopcartEJS = join(publicViewsPath, '/shopcart.ejs');
+const checkoutEJS = join(publicViewsPath, '/checkout.ejs');
 
 const filesEJS = {
-  landingEJS,      //*
-  shopEJS,         //TODO
-  orderEJS,        //!
-  checkEJS,        //!
-
-  loginEJS,        //*
-  productFormEJS,  //!
-  notificationEJS, //!
-
   errorAtGetEJS,   //*
   errorAtPostEJS,  //*
+
+  loginEJS,       //*
+  productFormEJS, //!
+  ordersEJS,      //!
+
+  landingEJS,      //*
+  menuEJS,         //*
+  orderingEJS,     //TODO
+  shopcartEJS,     //!
+  checkoutEJS,     //!
 }
   
 export default filesEJS;

@@ -16,7 +16,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/public/shop.css"
+      href="/static/css/public/menu.css"
     />
 
     <title><%= title %></title>
@@ -29,25 +29,37 @@
       <header>
         <h1>Beraka Productos</h1>
         <p>Menú</p>
+
+        <% if (!data.token) { %>
+          <div id="icon-bar">
+            <a class="icons" href="/shopcart?tag=<%= data.tag %><%= data.unparsed ? `&unparsed=${data.unparsed}` : '' %>">
+              <img
+                src="/static/icon/cart.ico"
+                alt="Shopcart Icon"
+              />
+            </a>
+            <span id="counter-shopcart"><%= data.counter %></span>
+          </div>
+        <% } %>
       </header>
 
       <main>
         <% if (data.token) { %>
-          <a class="ref" href="/product_form?token=<%= data.token %>">Subir producto</a>
+          <a class="ref" href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>">Subir producto</a>
 
           <% Object.entries(data.products).forEach(([type, products]) => { %>
-            <button data-id="<%= type %>" class="collapsible-button">Mostrar contenido</button>
+            <button data-id="<%= type %>" data-spanish="<%= products[0].spanish %>" class="collapsible-button">Mostrar contenido</button>
 
             <div id="<%= type %>" class="collapsible-content">
               <% products.forEach(product => { %>
                 <section class="container">
-                  <a href="/product_form?token=<%= data.token %>&product_name=<%= product.name %>">
+                  <a href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>&product_name=<%= product.name %>">
                     <img src="<%= product.img_uri %>"/>
                   </a>
                   
                   <h2><%= product.name %></h2>
                   <p>Descripción: <%= product.description %></p>
-                  <p>Precio: $<%= product.cost %></p>
+                  <p>Precio: $<%= product.cost.toLocaleString("es-CO") %></p>
                 </section>
               <% }); %>
             </div>
@@ -59,13 +71,13 @@
             <div id="<%= type %>" class="collapsible-content">
               <% products.forEach(product => { %>
                 <section class="container">
-                  <a href="/order?product_name=<%= product.name %>">
-                    <img src="<%= product.img_uri %>"/>
+                  <a href="/ordering?tag=<%= data.tag %><%= data.unparsed ? `&unparsed=${data.unparsed}` : '' %>&product_name=<%= product.name %>&mode=add">
+                    <img src="<%= product.img_uri %>" defer/>
                   </a>
                   
                   <h2><%= product.name %></h2>
                   <p>Descripción: <%= product.description %></p>
-                  <p>Precio: $<%= product.cost %></p>
+                  <p>Precio: $<%= product.cost.toLocaleString("es-CO") %></p>
                 </section>
               <% }); %>
             </div>

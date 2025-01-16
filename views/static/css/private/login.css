@@ -1,13 +1,13 @@
 body {
   margin: 0;
   padding: 0;
+
+  height: 100vh;
   
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  height: 100vh;
   
   background-color: #111;
   
@@ -21,10 +21,7 @@ body {
   position: absolute;
   inset: 0;
   
-  background-image: url('../../img/background_login.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url('../../img/background_login.png') center/cover no-repeat;
   filter: opacity(0.2);
   
   z-index: 0;
@@ -128,10 +125,12 @@ h1, h2, h3 {
 }
 
 h1 {
-  padding-bottom: 5px;
+  background: linear-gradient(45deg, #ddc08d, #483816);
+  background-clip: text;
   
-  font-size: clamp(22px, 3vmax, 35px);
-  color: rgb(228, 195, 133);
+  color: transparent;
+  
+  font-size: 1.5em;
 }
 
 h2 {
@@ -156,9 +155,9 @@ p {
 }
 
 button {
-  padding: 8px 15px;
+  padding: 4px 15px;
 
-  font-size: clamp(16px, 1.5vw, 18px);
+  font-size: 1.05em;
   font-weight: 600;
   
   background-color: #999;
@@ -167,7 +166,7 @@ button {
   border: 2px groove #222;
   border-radius: 20px;
   
-  transition: all 0.3s ease;
+  transition: all .3s ease;
 }
 
 button:hover {

@@ -5,8 +5,8 @@ import { randomBytes } from 'crypto';
 export function generateSpecsToken() {
   const token      = randomBytes(32).toString('base64url');
   const expiration = new Date(
-    Date.now() + env.TOKEN_EXPIRATION_SECONDS * 1000
-  )
+    Date.now() + env.TOKEN_LIFE_SECONDS * 1000
+  );
 
   return { token: token, expiration: expiration }
 }

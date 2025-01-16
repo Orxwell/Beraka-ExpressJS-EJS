@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/static/icon/favicon.ico"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/public/shopcart.css"
+    />
+
+    <title><%= title %></title>
+  </head>
+
+  <body>
+    <div id="bg-img"></div>
+
+    <div class="wrapper">
+      <header>
+        <h1>Beraka Productos</h1>
+        <p>Carrito</p>
+      </header>
+
+      <main>
+        <% data.ordered.forEach(product => { %>
+          <section class="container">
+            <a class="h2-link" href="/ordering?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>&product_name=<%= product.name %>&mode=modify">
+              <h2><%= product.name %></h2>
+            </a>
+
+            <p>$ <%= product.cost.toLocaleString("es-CO") %></p>
+            <p>Pediste: <%= product.quantity %></p>
+
+            <a class="icons" href="/shopcart?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>&product_name=<%= product.name %>&flag=erase">
+              <img
+                src="/static/icon/trash_can.ico"
+                alt="Trash Can Icon"
+              />
+            </a>
+          </section>
+        <% }); %>
+
+        <hr />
+        
+        <section id="controler" class="container">
+          <p>Subtotal = $ <%= data.subtotal %></p>
+
+          <hr />
+
+          <div>
+            <a href="/menu?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>">
+              Ir al menú
+            </a>
+
+            <a href="/menu?tag=<%= data.tag %>">
+              Borrar carrito
+            </a>
+  
+            <a href="/checkout?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>">
+              Facturar
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

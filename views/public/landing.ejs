@@ -32,8 +32,8 @@
       </header>
       
       <nav>
-        <% data.establishments.forEach((item) => { %>
-          <a href="/shop?tag=<%= item.tag %>">I'm at <%= item.shop %></a>
+        <% data.establishments.forEach(item => { %>
+          <a href="/menu?tag=<%= item.tag %>">I'm at <%= item.shop %></a>
         <% }); %>
       </nav>
     </div>
