@@ -28,13 +28,17 @@
     <div class="wrapper">
       <header>
         <h1>Bienvenidos</h1>
-        <p>Beraka Galería</p>
+        <p>Beraka Contenido</p>
       </header>
       
       <nav>
         <% data.establishments.forEach(item => { %>
-          <a href="/menu?tag=<%= item.tag %>">I'm at <%= item.shop %></a>
+          <a href="/menu?tag=<%= item.tag %>">Pedir en <%= item.shop %></a>
         <% }); %>
+
+        <hr />
+
+        <a href="/menu?tag=north">Consultar librería</a>
       </nav>
     </div>
   </body>

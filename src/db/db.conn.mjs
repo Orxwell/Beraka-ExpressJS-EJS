@@ -1,4 +1,4 @@
-import env from '../env/load_env.mjs';
+import env from '../env/env.load.mjs';
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
 

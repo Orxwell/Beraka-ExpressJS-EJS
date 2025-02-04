@@ -16,6 +16,12 @@
     <link
       rel="stylesheet"
       type="text/css"
+      href="/static/css/icons.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
       href="/static/css/public/shopcart.css"
     />
 
@@ -53,7 +59,7 @@
         <hr />
         
         <section id="controler" class="container">
-          <p>Subtotal = $ <%= data.subtotal %></p>
+          <p id="subtotal"><strong class="subtotal">Subtotal</strong> = <strong class="price">$ <%= data.subtotal %> COP</strong></p>
 
           <hr />
 
@@ -63,11 +69,11 @@
             </a>
 
             <a href="/menu?tag=<%= data.tag %>">
-              Borrar carrito
+              Borrar todo
             </a>
   
             <a href="/checkout?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>">
-              Facturar
+              Terminar
             </a>
           </div>
         </section>

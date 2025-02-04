@@ -23,7 +23,7 @@ body {
       rgba(0, 0, 0, 0),
       rgba(17, 17, 17, 1)
     ), 
-    url('../../img/background_landing.png') center/cover no-repeat
+    url('../../img/backgrounds/all.png') center/cover no-repeat
   ;
   filter: opacity(.2);
   
@@ -53,12 +53,6 @@ header {
 header p {
   font-size: clamp(12px, 1.2vw, 16px);
   color: #fff;
-}
-
-#icon-bar {
-  display: flex;
-
-  height: 30px;
 }
 
 main {
@@ -117,32 +111,6 @@ img {
   border-radius: 20px;
 }
 
-.icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: right;
-
-  width: 30px;
-  height: 30px;
-
-  border-radius: 999px;
-
-  transition: all .3s ease-in-out;
-}
-
-.icons img {
-  width: 24px;
-  height: 24px;
-
-  border-radius: 0;
-}
-
-.icons:hover {
-  background: rgb(87, 84, 84, .2);
-  filter: opacity(.4);
-}
-
 h1, h2, h3 {
   user-select: none;
   text-decoration: none;
@@ -192,8 +160,24 @@ p {
   margin: 0;
 }
 
+#subtotal {
+  color: rgba(157, 134, 93, .5);
+}
+
+.subtotal {
+  color: inherit;
+  
+  animation: animatedQuantity 3.5s infinite;
+}
+
+strong {
+  color: rgb(205, 199, 186);
+}
+
 hr {
-  width: 90%;
+  width: 94%;
+
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 #controler {

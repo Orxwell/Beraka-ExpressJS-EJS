@@ -26,7 +26,7 @@ body {
       rgba(0, 0, 0, 0),
       rgba(17, 17, 17, 1)
     ), 
-    url('../../img/background_errors.png');
+    url('../../img/backgrounds/errors.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

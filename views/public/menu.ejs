@@ -16,6 +16,12 @@
     <link
       rel="stylesheet"
       type="text/css"
+      href="/static/css/icons.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
       href="/static/css/public/menu.css"
     />
 
@@ -45,7 +51,7 @@
 
       <main>
         <% if (data.token) { %>
-          <a class="ref" href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>">Subir producto</a>
+          <a class="ref" href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>&mode=add">Subir producto</a>
 
           <% Object.entries(data.products).forEach(([type, products]) => { %>
             <button data-id="<%= type %>" data-spanish="<%= products[0].spanish %>" class="collapsible-button">Mostrar contenido</button>
@@ -53,7 +59,7 @@
             <div id="<%= type %>" class="collapsible-content">
               <% products.forEach(product => { %>
                 <section class="container">
-                  <a href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>&product_name=<%= product.name %>">
+                  <a href="/product_form?tag=<%= data.tag %>&token=<%= data.token %>&product_name=<%= product.name %>&mode=update">
                     <img src="<%= product.img_uri %>"/>
                   </a>
                   

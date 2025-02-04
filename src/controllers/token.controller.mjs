@@ -1,6 +1,6 @@
-import env from '../env/load_env.mjs';
-
 import { randomBytes } from 'crypto';
+
+import env from '../env/env.load.mjs';
 
 export function generateSpecsToken() {
   const token      = randomBytes(32).toString('base64url');
@@ -12,15 +12,15 @@ export function generateSpecsToken() {
 }
 
 export function scheduleTokenExpiration(specs, db) {
-  const expireInMs = specs.expiration - Date.now();
+  const expire_in_ms = specs.expiration - Date.now();
 
-  if (expireInMs > 0) {
+  if (expire_in_ms > 0) {
     setTimeout(async () => {
       try {
-        const foundToken = await db.collection('tokens').findOne(
+        const found_token = await db.collection('tokens').findOne(
           { token: specs.token }, { projection: { _id: 1 }}
         );
-        if (foundToken) {
+        if (found_token) {
           await db.collection('tokens').deleteOne({ token: specs.token });
         }
       } catch (err) {
@@ -30,6 +30,6 @@ export function scheduleTokenExpiration(specs, db) {
         );
         process.exit(1);
       }
-    }, expireInMs);
+    }, expire_in_ms);
   }
 }

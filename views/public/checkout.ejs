@@ -16,88 +16,59 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/public/check.css"
+      href="/static/css/public/checkout.css"
     />
 
     <title><%= title %></title>
   </head>
 
   <body>
+    <div id="bg-img"></div>
+
     <div class="wrapper">
       <header>
-        <h1>DailyBites</h1>
-        <p>Factura</p>
+        <h1>Beraka Productos</h1>
+        <p>Facturar</p>
       </header>
 
       <main>
         <section class="container">
+          <h2>Tu Factura</h2>
+
+          <hr />
+
+          <% data.ordered.forEach(product => { %>
+            <div class="subcontainer">
+              <h2><%= product.name %></h2>
+              <p>$ <%= product.cost.toLocaleString("es-CO") %></p>
+              <p>Pediste: <%= product.quantity %></p>
+            </div>
+          <% }); %>
+
+          <hr />
+
+          <p>Total: <span>$ <%= data.total.toLocaleString("es-CO") %></span></p>
+
           <form
-            action="/check"
+            action="/checkout"
             method="POST"
           >
-            <h2>Tu Factura</h2>
-
-            <p>Nombre del cliente:</p>
+            <input type="hidden" name="tag" value="<%= data.tag %>">
+            <input type="hidden" name="unparsed" value="<%= data.unparsed %>">
+            
             <input
-              type="hidden"
-              name="clientname"
-              value="<%= data.clientname %>"
+              class="entries"
+              type="text"
+              name="email"
+              placeholder="correo electrónico"
+              required
             />
-            <span><%= data.clientname %></span>
-
-            <p>Correo del cliente:</p>
-            <input
-              type="hidden"
-              name="clientgmail"
-              value="<%= data.clientgmail %>"
-            />
-            <span><%= data.clientgmail %></span>
-    
-            <p>Hora de entrega:</p>
-            <input
-              type="hidden"
-              name="deliverytime"
-              value="<%= data.deliverytime %>"
-            />
-            <span><%= data.deliverytime %></span>
-    
-            <p>Método de pago:</p>
-            <input
-              type="hidden"
-              name="paymethod"
-              value="<%= data.paymethod %>"
-            />
-            <span><%= data.paymethod %></span>
-    
-            <p>Lugar de recogida:</p>
-            <input
-              type="hidden"
-              name="location"
-              value="<%= data.dish.location %>"
-            />
-            <span><%= data.dish.location %></span>
-    
-            <p>Nombre del producto:</p>
-            <input
-              type="hidden"
-              name="productname"
-              value="<%= data.dish.name %>"
-            />
-            <span><%= data.dish.name %></span>
-    
-            <p>Total:</p>
-            <input
-              type="hidden"
-              name="totalprice"
-              value="<%= data.dish.price %>"
-            />
-            <span>$ <%= data.dish.price %></span>
 
             <button type="submit">Confirmar pedido</button>
           </form>
         </section>
 
-        <a href="/shop">Cancelar pedido</a>
+        <a href="/shopcart?tag=<%= data.tag %>&unparsed=<%= data.unparsed %>">Cancelar pedido</a>
       </main>
     </div>
   </body>

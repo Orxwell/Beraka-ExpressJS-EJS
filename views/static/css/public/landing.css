@@ -2,12 +2,12 @@ body {
   margin: 0;
   padding: 0;
 
+  height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  height: 100vh;
 
   background-color: #111;
 
@@ -21,8 +21,8 @@ body {
   position: absolute;
   inset: 0;
   
-  background: url('../../img/background_landing.png') center/cover no-repeat;
-  filter: opacity(0.2);
+  background: url('../../img/backgrounds/landing.png') center/cover no-repeat;
+  filter: opacity(.2);
   
   z-index: 0;
 }
@@ -122,6 +122,12 @@ a {
 
 a:hover {
   color: #fff;
+}
+
+hr {
+  width: 80%;
+
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 ::-webkit-scrollbar {

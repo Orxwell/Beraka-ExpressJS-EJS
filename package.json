@@ -1,10 +1,9 @@
 {
-  "name": "beraka-express-railway",
+  "name": "beraka-expressjs-ejs",
   "version": "1.0.0",
   "main": "server.mjs",
   "scripts": {
     "test": "echo \"Succesfully test...\" && exit 0",
-    
     "start": "node ./src/server.mjs",
     "dev": "node --env-file .env ./src/server.mjs"
   },
@@ -14,11 +13,11 @@
   "type": "module",
   "description": "This is a project made by one developer, to serve a local place with a database, UX/UI and a point of sale.",
   "dependencies": {
-    "axis": "1.0.0",
     "ejs": "3.1.10",
     "express": "4.21.2",
+    "mercadopago": "2.3.0",
     "mongodb": "6.11.0",
     "multer": "1.4.5-lts.1",
-    "nodemailer": "6.9.16"
+    "nodemailer": "6.10.0"
   }
 }

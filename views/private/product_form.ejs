@@ -23,35 +23,31 @@
   </head>
 
   <body>
+    <div id="bg-img"></div>
+
     <div class="wrapper">
       <header>
-        <h1>DailyBites</h1>
+        <h1>Beraka Productos</h1>
         <p>Formulario</p>
       </header>
 
       <main>
         <section class="container">
           <h2>Especificaciones</h2>
+
+          <hr />
+
           <form
             action="/product_form"
             method="POST"
             enctype="multipart/form-data"
           >
-            <input
-              type="hidden"
-              name="token"
-              value="<% data.token %>"
-            />
 
-            <% if (data.dish) { %>
-              <input
-                type="hidden"
-                name="flag"
-                value="true"
-              />
-            <% } %>
+            <input type="hidden" name="tag" value="<%= data.tag %>"/>
+            <input type="hidden" name="token" value="<% data.token %>"/>
+            <input type="hidden" name="mode" value="<% data.mode %>"/>
             
-            <% if (data.dish) { %>
+            <% if (data.product) { %>
               <input
                 class="entries"
                 type="text"
